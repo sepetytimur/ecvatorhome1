@@ -93,13 +93,20 @@ def move_doc(dicts):
 def giv_name(do):
     """ функция которая будет выдовать список всех владельцев документов
     """
-    try:
-        names_of = []
-        for name in do:
+    # try:
+    names_of = []
+    for name in do:
+        try:
             names_of.append(name['name'])
-        return (names_of)
-    except KeyError:
-        print('у этих документов нет владельца')
+        except KeyError:
+            print(f"'у документа с номером ' {name['number']} нет владельца")
+            continue
+        print(name)
+    return (names_of)
+
+
+# except KeyError:
+# print('у этих документов нет владельца')
 
 
 def user(a):
@@ -136,7 +143,7 @@ def user(a):
 
 documents = [
     {"type": "passport", "number": "2207 876234", "name": "Василий Гупкин"},
-    {"type": "invoice", "number": "11-2", "name": "Геннадий Покемонов"},
+    {"type": "invoice", "number": "11-2", "nam": "Геннадий Покемонов"},
     {"type": "insurance", "number": "10006", "name": "Аристарх Павлов"}
 ]
 directories = {
